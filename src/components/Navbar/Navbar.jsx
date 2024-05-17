@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import "./Navbar.css";
 import { assets } from "../../assets/assets";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [menu, setMenu] = useState("Home");
 
   return (
     <div className="navbar">
-       <Link to ='/'><img src={assets.logo} alt="" className="logo" /></Link>
+      <Link to ='/'><img src={assets.logo} alt="" className="logo" /></Link>
       <ul className="navbar-menu">
         <li
           onClick={() => setMenu("Home")}
@@ -37,7 +38,7 @@ const Navbar = () => {
       <div className="navbar-right">
         <img src={assets.search_icon} alt="" />
         <div className="navbar-search-icon">
-        <Link to ='/cart'><img src={assets.basket_icon} alt="" /> </Link>
+          <Link to ='/cart'><img src={assets.basket_icon} alt="" /> </Link>
           <div className="dot"></div>
         </div>
         <button>Sign in</button>
