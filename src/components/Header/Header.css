@@ -13,29 +13,21 @@
   display: flex;
   flex-direction: column;
   align-items: start;
-  gap: 10px; /* Controls the spacing between h1, h2, and h3 */
+  gap: 1.5vw;
   max-width: 50%;
-  bottom: 20%;
+  bottom: 10%;
   left: 6vw;
   animation: fadeIn 3s;
 }
 
-.header-contents h1,
-.header-contents h2,
-.header-contents h3 {
-  color: #fff;
-  font-size: 30px;
-  font-style: normal;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  font-weight: 600;
-  line-height: normal;
-  letter-spacing: 0;
-  text-transform: none;
-  margin: 0;
+.header-contents h2 {
+  color: white;
+  font-size: max(2.5vw, 22px);
+  margin-bottom: 30px;
 }
 
-.header-contents h3 {
-  color: #ffb271; /* Specific color for h3 */
+.brown-text {
+  color: #ffb271; /* Brown color for Cafe Microdata */
 }
 
 .header-contents button {
@@ -45,9 +37,7 @@
   padding: 1vw 2.3vw;
   background-color: #a86227;
   font-size: max(ivw, 13px);
-  border-radius: 50px;
-  margin-top: 40px;
-  cursor: pointer;
+  border-radius: 5px;
 }
 
 @media (max-width: 1050px) {
@@ -59,6 +49,9 @@
 @media (max-width: 750px) {
   .header-contents {
     max-width: 65%;
+  }
+  .header-contents p {
+    display: none;
   }
   .header-contents button {
     padding: 2vw 4vw;

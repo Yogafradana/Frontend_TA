@@ -5,10 +5,12 @@ const Header = () => {
   return (
     <div className="header">
       <div className="header-contents">
-        <h1>Bug Membandel? Temukan</h1>
-        <h2>Solusinya Sambil Ngopi di</h2>
-        <h3>Cafe Microdata</h3>
-        <button>Pesan Sekarang</button>
+        <h2>
+          Bug Membandel? Temukan <br />
+          solusinya sambil ngopi di <br />
+          <span className="brown-text">Cafe Microdata</span>
+        </h2>
+        <button>Order Now</button>
       </div>
     </div>
   );
