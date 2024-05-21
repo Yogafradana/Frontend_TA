@@ -20,7 +20,7 @@ const FoodDisplay = ({ category }) => {
 		// Make a request for a user with a given ID
 
 		// Mulai loading
-		axios.get('http://127.0.0.1:8000/api/menu').then(function (hasil_axios) {
+		axios.get('http://127.0.0.1:8000/api/menu/3').then(function (hasil_axios) {
 			// Ketika axios ini selesai dan success kita harus apa?
 			// Response = response
 			// Tampilkan menu
@@ -50,6 +50,9 @@ const FoodDisplay = ({ category }) => {
 			<h2>Top Dishes near you | contoh</h2>
 			<div className="food-display-list">
 				{console.log("-", Response)}
+
+				{Response != null ? Response.nama_menu : '-'}
+
 				{
 					Response != null && Response.length > 0 ?
 						Response.map((item, index) => {
@@ -61,7 +64,7 @@ const FoodDisplay = ({ category }) => {
 										name={item.nama_menu}
 										description={item.deskripsi}
 										price={item.harga}
-										image={"http://127.0.0.1:9000" + item.gambar}
+										image={"http://127.0.0.1:8000" + item.gambar}
 									/>
 								);
 							}
