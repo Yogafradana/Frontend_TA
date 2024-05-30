@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import "./Cart.css";
-import { StoreContext } from '../../context/StoreContext'
+import { StoreContext } from '../../context/StoreContext';
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
@@ -12,7 +12,7 @@ const Cart = () => {
   const [table, setTable] = useState("");
   const [additionalInfo, setAdditionalInfo] = useState("");
   const [tableOptions, setTableOptions] = useState([]);
-  const [newCartItem, setnewCartItem] = useState([]);
+  const [newCartItem, setNewCartItem] = useState([]);
 
   useEffect(() => {
     // Mengambil data meja kosong dari API
@@ -50,7 +50,7 @@ const Cart = () => {
         gambar: groupedCart[i][1][0].gambar,
       });
     }
-    setnewCartItem(newArray);
+    setNewCartItem(newArray);
   }, [cartItems]);
 
   const groupObject = (list, keyGetter) => {
@@ -145,7 +145,7 @@ const Cart = () => {
       </div>
 
       <div className="additional-info">
-        <label htmlFor="additional-info">Keterangan : </label>
+        <label htmlFor="additional-info">Keterangan:</label>
         <textarea
           id="additional-info"
           value={additionalInfo}
