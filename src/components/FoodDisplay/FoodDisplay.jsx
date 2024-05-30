@@ -56,6 +56,7 @@ const FoodDisplay = ({ category }) => {
                 return (
                   <FoodItem
                     key={index}
+                    item={item}
                     id={item.id}
                     name={item.nama_menu}
                     description={item.deskripsi}
