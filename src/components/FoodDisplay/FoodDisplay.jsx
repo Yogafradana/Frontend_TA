@@ -21,7 +21,7 @@ const FoodDisplay = ({ category }) => {
 
     // Mulai loading
     axios
-      .get("http://127.0.0.1:8000/api/menu")
+      .get("http://127.0.0.1:8000/api/menu/best")
       .then(function (hasil_axios) {
         // Ketika axios ini selesai dan success kita harus apa?
         // Response = response
@@ -47,7 +47,7 @@ const FoodDisplay = ({ category }) => {
 
   return (
     <div className="food-display" id="food-display">
-      <h2>Top Dishes near you | contoh</h2>
+      <h2>Best Seller</h2>
       <div className="food-display-list">
         {console.log("-", Response)}
         {Response != null && Response.length > 0
@@ -60,7 +60,7 @@ const FoodDisplay = ({ category }) => {
                     name={item.nama_menu}
                     description={item.deskripsi}
                     price={item.harga}
-                    image={"http://127.0.0.1:9000" + item.gambar}
+                    image={"http://127.0.0.1:8000" + item.gambar}
                   />
                 );
               }

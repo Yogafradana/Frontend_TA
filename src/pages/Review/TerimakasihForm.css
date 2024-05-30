@@ -1,0 +1,74 @@
+/* src/TerimakasihForm.css */
+.terimakasih-form {
+    background-color: #e0e0e0;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .label-star {
+    margin-left: 5px;
+    color: #ffc107;
+  }
+  
+  input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: vertical;
+    height: 100px;
+  }
+  
+  .stars {
+    display: flex;
+    align-items: center;
+  }
+  
+  .star {
+    font-size: 24px;
+    cursor: pointer;
+    color: #ddd;
+    transition: color 0.2s;
+  }
+  
+  .star.filled {
+    color: #ffc107;
+  }
+  
+  button {
+    background-color: #6d4c41;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #5d4037;
+  }
+  

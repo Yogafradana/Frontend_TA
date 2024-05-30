@@ -1,0 +1,21 @@
+.review {
+    border: 1px solid #ddd;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .review h3 {
+    margin: 0 0 8px 0;
+  }
+  
+  .stars {
+    color: #ffc107;
+    margin-bottom: 8px;
+  }
+  
+  .star {
+    margin-right: 4px;
+  }
+  
