@@ -6,52 +6,42 @@ import axios from "axios";
 
 const FoodDisplay = ({ category }) => {
   const { food_list } = useContext(StoreContext);
-  const [Response, setResponse] = useState(null);
-
-  // var Response = ""
-
-  // const axios = require('axios');
+  const [bestSellerResponse, setBestSellerResponse] = useState(null);
+  const [recommendationResponse, setRecommendationResponse] = useState(null);
 
   useEffect(() => {
-    getMenu();
+    getBestSellerMenu();
+    getRecommendationMenu();
   }, []);
 
-  function getMenu() {
-    // Make a request for a user with a given ID
-
-    // Mulai loading
+  function getBestSellerMenu() {
     axios
       .get("http://127.0.0.1:8000/api/menu/best")
-      .then(function (hasil_axios) {
-        // Ketika axios ini selesai dan success kita harus apa?
-        // Response = response
-        // Tampilkan menu
-        // console.log("Response axios: ", hasil_axios.data)
-        // setResponse(hasil_axios)
-        setResponse(hasil_axios.data);
+      .then(function (response) {
+        setBestSellerResponse(response.data);
       })
       .catch(function (error) {
-        // Ketika ada error kita harus apa
         console.log(error);
-        // Tampilkan halaman error
-      })
-      .finally(function () {
-        // Ketika axios ini selesai mau itu error atau success kita harus apa?
-        // Hentikan loading
       });
   }
 
-  useEffect(() => {
-    console.log("Response:", Response);
-  }, [Response]);
+  function getRecommendationMenu() {
+    axios
+      .get("http://127.0.0.1:8000/api/menu/rekomendasi")
+      .then(function (response) {
+        setRecommendationResponse(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 
   return (
     <div className="food-display" id="food-display">
       <h2>Best Seller</h2>
       <div className="food-display-list">
-        {console.log("-", Response)}
-        {Response != null && Response.length > 0
-          ? Response.map((item, index) => {
+        {bestSellerResponse != null && bestSellerResponse.length > 0
+          ? bestSellerResponse.map((item, index) => {
               if (category === "All" || category === item.category) {
                 return (
                   <FoodItem
@@ -67,21 +57,27 @@ const FoodDisplay = ({ category }) => {
               }
             })
           : "Loading ..."}
+      </div>
 
-        {/* {food_list.map((item, index) => {
-					if (category === "All" || category === item.category) {
-						return (
-							<FoodItem
-								key={index}
-								id={item._id}
-								name={item.name}
-								description={item.description}
-								price={item.price}
-								image={item.image}
-							/>
-						);
-					}
-				})} */}
+      <h2>Rekomendasi</h2>
+      <div className="food-display-list">
+        {recommendationResponse != null && recommendationResponse.length > 0
+          ? recommendationResponse.map((item, index) => {
+              if (category === "All" || category === item.category) {
+                return (
+                  <FoodItem
+                    key={index}
+                    item={item}
+                    id={item.id}
+                    name={item.nama_menu}
+                    description={item.deskripsi}
+                    price={item.harga}
+                    image={"http://127.0.0.1:8000" + item.gambar}
+                  />
+                );
+              }
+            })
+          : "Loading ..."}
       </div>
     </div>
   );

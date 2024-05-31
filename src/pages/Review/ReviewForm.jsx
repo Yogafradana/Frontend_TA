@@ -52,10 +52,6 @@ const ReviewForm = () => {
             />
           </div>
           <div className="form-group">
-            <label>
-              Rating:
-              <FontAwesomeIcon icon={faStar} className="label-star" />
-            </label>
             <div className="stars">
               {[...Array(5)].map((_, index) => (
                 <FontAwesomeIcon

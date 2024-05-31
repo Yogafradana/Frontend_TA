@@ -15,8 +15,7 @@ const Cart = () => {
   const [newCartItem, setNewCartItem] = useState([]);
 
   useEffect(() => {
-    // Mengambil data meja kosong dari API
-    axios.get('http://127.0.0.1:8000/api/meja/kosong') // Ganti dengan URL API yang benar
+    axios.get('http://127.0.0.1:8000/api/meja/kosong')
       .then(response => {
         const tables = response.data.map(meja => ({
           value: meja.meja_id,
@@ -34,7 +33,7 @@ const Cart = () => {
 
     let newArray = [];
     for (let i = 0; i < groupedCart.length; i++) {
-      // Hitung harga
+      //menghitung harga
       let price = 0;
       for (let k = 0; k < groupedCart[i][1].length; k++) {
         price += Number(groupedCart[i][1][k].harga);
@@ -44,7 +43,7 @@ const Cart = () => {
         nama_menu: groupedCart[i][1][0].nama_menu,
         deskripsi: groupedCart[i][1][0].deskripsi,
         harga: price,
-        id: groupedCart[i][1][0].id,
+        menu_id: groupedCart[i][1][0].menu_id,
         kategori: groupedCart[i][1][0].kategori,
         jumlah: groupedCart[i][1].length,
         gambar: groupedCart[i][1][0].gambar,
@@ -67,19 +66,20 @@ const Cart = () => {
     return map;
   };
 
-  const handleCheckout = () => {
+  function handleCheckout() {
     const orderData = {
-      nama_pengunjung: name,
+      nama_pengunjung: "",
       meja_id: table,
       menus: newCartItem.map(item => ({
-        menu_id: item.id,
+        menu_id: item.menu_id,
         jumlah: item.jumlah,
         subtotal: item.harga * item.jumlah
       })),
-      keterangan: additionalInfo
+      keterangan: "",
+      total_harga: getTotalCartAmount()
     };
 
-    axios.post('http://127.0.0.1:8000/api/pemesanan', orderData) // Ganti dengan URL API yang benar
+    axios.post('http://127.0.0.1:8000/api/pemesanan', orderData)
       .then(response => {
         console.log('Order successfully placed:', response.data);
         navigate("/order-confirmation");
@@ -129,7 +129,7 @@ const Cart = () => {
         </div>
         <br />
         <hr />
-        {newCartItem.map((item, index) => (
+        {newCartItem && newCartItem.map((item, index) => (
           <div key={index}>
             <div className="cart-items-title cart-items-item">
               <img src={"http://127.0.0.1:8000" + item.gambar} alt="" />
@@ -137,7 +137,7 @@ const Cart = () => {
               <p>${item.harga}</p>
               <p>{item.jumlah}</p>
               <p>${item.harga * item.jumlah}</p>
-              <p onClick={() => removeFromCart(item.id)} className="cross">x</p>
+              <p onClick={() => removeFromCart(item.menu_id)} className="cross">x</p>
             </div>
             <hr />
           </div>
@@ -161,17 +161,17 @@ const Cart = () => {
           <div>
             <div className="cart-total-details">
               <p>Subtotal</p>
-              <p>${getTotalCartAmount()}</p>
+              <p>Rp{getTotalCartAmount()}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <p>Delivery fee</p>
-              <p>${getTotalCartAmount() === 0 ? 0 : 2}</p>
+              <p>Rp{getTotalCartAmount() === 0 ? 0 : 2}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <b>Total</b>
-              <b>${getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}</b>
+              <b>Rp{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}</b>
             </div>
           </div>
           <button onClick={handleCheckout}>Checkout</button>
