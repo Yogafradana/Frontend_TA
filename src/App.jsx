@@ -8,8 +8,8 @@ import Footer from "./components/Footer/Footer";
 import TentangKami from "./pages/TentangKami/TentangKami";
 import HubungiKami from "./pages/HubungiKami/HubungiKami";
 import InformasiPesanan from "./pages/InformasiPesanan/InformasiPesanan";
-import ReviewForm from './pages/Review/ReviewForm';
-import Menu from './pages/Menu/Menu';
+import ReviewForm from "./pages/Review/ReviewForm";
+import Menu from "./pages/Menu/Menu";
 import CheckOrder from "./pages/CheckOrder/CheckOrder";
 import CheckHistory from "./pages/CheckOrder/CheckHistory";
 
@@ -27,7 +27,10 @@ const App = () => {
           <Route path="/reviewform" element={<ReviewForm />} />
           <Route path="/menu" element={<Menu />} />
           <Route path="/checkorder" element={<CheckOrder />} />
-        <Route path="/order-history/:pemesanan_id" element={<CheckHistory />} />
+          <Route
+            path="/order-history/:pemesanan_id"
+            element={<CheckHistory />}
+          />
         </Routes>
       </div>
       <Footer />

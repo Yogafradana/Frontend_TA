@@ -1,11 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./FoodDisplay.css";
-import { StoreContext } from "../../context/StoreContext";
 import FoodItem from "../FoodItem/FoodItem";
 import axios from "axios";
 
 const FoodDisplay = ({ category }) => {
-  const { food_list } = useContext(StoreContext);
   const [bestSellerResponse, setBestSellerResponse] = useState(null);
   const [recommendationResponse, setRecommendationResponse] = useState(null);
 
@@ -72,7 +70,7 @@ const FoodDisplay = ({ category }) => {
                     name={item.nama_menu}
                     description={item.deskripsi}
                     price={item.harga}
-                    image={"http://127.0.0.1:8000" + item.gambar}
+                    image={"http://127.0.0.1:8081" + item.gambar}
                   />
                 );
               }

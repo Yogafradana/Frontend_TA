@@ -1,5 +1,6 @@
 .header {
   height: 34vw;
+  width: 100%;
   margin: 30px auto;
   background: url("../../../public/header.png") no-repeat center center;
   background-size: cover; /* This will make the image cover the entire element */

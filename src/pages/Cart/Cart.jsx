@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import "./Cart.css";
-import { StoreContext } from '../../context/StoreContext';
+import { StoreContext } from "../../context/StoreContext";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const { cartItems, removeFromCart, getTotalCartAmount } = useContext(StoreContext);
+  const { cartItems, removeFromCart, getTotalCartAmount } =
+    useContext(StoreContext);
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
@@ -15,15 +16,16 @@ const Cart = () => {
   const [newCartItem, setNewCartItem] = useState([]);
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/api/meja/kosong')
-      .then(response => {
-        const tables = response.data.map(meja => ({
+    axios
+      .get("http://127.0.0.1:8000/api/meja/kosong")
+      .then((response) => {
+        const tables = response.data.map((meja) => ({
           value: meja.meja_id,
-          label: `Table ${meja.nomor_meja}`
+          label: `Table ${meja.nomor_meja}`,
         }));
         setTableOptions(tables);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("There was an error fetching the table data!", error);
       });
   }, []);
@@ -70,24 +72,25 @@ const Cart = () => {
     const orderData = {
       nama_pengunjung: "",
       meja_id: table,
-      menus: newCartItem.map(item => ({
+      menus: newCartItem.map((item) => ({
         menu_id: item.menu_id,
         jumlah: item.jumlah,
-        subtotal: item.harga * item.jumlah
+        subtotal: item.harga * item.jumlah,
       })),
       keterangan: "",
-      total_harga: getTotalCartAmount()
+      total_harga: getTotalCartAmount(),
     };
 
-    axios.post('http://127.0.0.1:8000/api/pemesanan', orderData)
-      .then(response => {
-        console.log('Order successfully placed:', response.data);
+    axios
+      .post("http://127.0.0.1:8000/api/pemesanan", orderData)
+      .then((response) => {
+        console.log("Order successfully placed:", response.data);
         navigate("/order-confirmation");
       })
-      .catch(error => {
-        console.error('There was an error placing the order!', error);
+      .catch((error) => {
+        console.error("There was an error placing the order!", error);
       });
-  };
+  }
 
   return (
     <div className="cart">
@@ -129,19 +132,25 @@ const Cart = () => {
         </div>
         <br />
         <hr />
-        {newCartItem && newCartItem.map((item, index) => (
-          <div key={index}>
-            <div className="cart-items-title cart-items-item">
-              <img src={"http://127.0.0.1:8000" + item.gambar} alt="" />
-              <p>{item.nama_menu}</p>
-              <p>${item.harga}</p>
-              <p>{item.jumlah}</p>
-              <p>${item.harga * item.jumlah}</p>
-              <p onClick={() => removeFromCart(item.menu_id)} className="cross">x</p>
+        {newCartItem &&
+          newCartItem.map((item, index) => (
+            <div key={index}>
+              <div className="cart-items-title cart-items-item">
+                <img src={"http://127.0.0.1:8000" + item.gambar} alt="" />
+                <p>{item.nama_menu}</p>
+                <p>${item.harga}</p>
+                <p>{item.jumlah}</p>
+                <p>${item.harga * item.jumlah}</p>
+                <p
+                  onClick={() => removeFromCart(item.menu_id)}
+                  className="cross"
+                >
+                  x
+                </p>
+              </div>
+              <hr />
             </div>
-            <hr />
-          </div>
-        ))}
+          ))}
       </div>
 
       <div className="additional-info">
@@ -171,7 +180,9 @@ const Cart = () => {
             <hr />
             <div className="cart-total-details">
               <b>Total</b>
-              <b>Rp{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}</b>
+              <b>
+                Rp{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}
+              </b>
             </div>
           </div>
           <button onClick={handleCheckout}>Checkout</button>

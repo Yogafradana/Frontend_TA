@@ -10,7 +10,9 @@ const Header = () => {
           solusinya sambil ngopi di <br />
           <span className="brown-text">Cafe Microdata</span>
         </h2>
-        <button onClick={() => window.location.href = "/menu"} >Order Now</button>
+        <button onClick={() => (window.location.href = "/menu")}>
+          Order Now
+        </button>
       </div>
     </div>
   );

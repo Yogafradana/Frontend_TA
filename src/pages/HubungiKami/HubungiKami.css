@@ -1,97 +1,66 @@
-/* src/components/ContactUs.css */
+/* src/components/HubungiKami.css */
 
 .contact-us {
-  max-width: 1100px; /* Lebih besar dari sebelumnya */
-  max-height: 1000px;
+  max-width: 600px; /* Mengurangi lebar agar lebih responsif */
   margin: 0 auto;
   padding: 20px;
+  background-color: #f9f9f9;
   border: 1px solid #ccc;
   border-radius: 8px;
-  background-color: #f9f9f9;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: flex; /* Mengatur agar elemen di dalam .contact-us sejajar secara horizontal */
-  flex-direction: row; /* Mengatur urutan elemen menjadi terbalik */
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
 }
 
 .contact-us h1 {
   color: #333;
-  margin-left: 20px;
-  align-items:center;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .contact-us form {
-  max-width: 600px; /* Atur lebar maksimal form */
-  margin: 0 auto; /* Agar form berada di tengah halaman */
-  padding: 20px;
-  
+  display: flex;
+  flex-direction: column;
 }
 
 .contact-us form div {
-  margin-bottom: 15px;
   display: flex;
-  align-items: center;
+  margin-bottom: 15px;
 }
 
 .contact-us form label {
-  margin-right: 20px;
-  font-weight: bold;
+  flex: 1;
+  text-align: right;
+  margin-right: 10px;
   color: #555;
-  text-align: right; /* Memindahkan label ke sisi kanan */
 }
 
 .contact-us form input,
 .contact-us form textarea {
-  width: 100%; /* Agar input dan textarea memiliki lebar penuh dari container */
+  flex: 3;
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
-  
 }
 
-
 .contact-us form button {
+  align-self: flex-end; /* Memindahkan tombol ke kanan bawah */
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #8b4513; /* Brown color */
   color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px; /* Jarak antara form dan tombol */
 }
 
 .contact-us form button:hover {
-  background-color: #0056b3;
-}
-.message {
-  color: green;
-  position: absolute;
-  top: -20px; /* Adjust as needed */
-  right: 0;
-  left: 0;
-  text-align: center;
-  z-index: 1;
-  background: white; /* Optional: to ensure text visibility */
-  padding: 5px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  animation: fadeIn 0.5s forwards;
+  background-color: #5a3210; /* Darker brown on hover */
 }
 
-@keyframes fadeInOut {
-  0% {
-      opacity: 0;
-  }
-  10% {
-      opacity: 1;
-  }
-  90% {
-      opacity: 1;
-  }
-  100% {
-      opacity: 0;
-  }
+.message {
+  color: green;
+  text-align: center;
+  margin-top: 10px; /* Jarak antara pesan sukses/gagal dengan form */
 }
