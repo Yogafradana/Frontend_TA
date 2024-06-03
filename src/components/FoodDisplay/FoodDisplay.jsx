@@ -70,7 +70,7 @@ const FoodDisplay = ({ category }) => {
                     name={item.nama_menu}
                     description={item.deskripsi}
                     price={item.harga}
-                    image={"http://127.0.0.1:8081" + item.gambar}
+                    image={"http://127.0.0.1:8001" + item.gambar}
                   />
                 );
               }
