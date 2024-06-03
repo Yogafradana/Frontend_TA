@@ -90,6 +90,7 @@ const Menu = () => {
           Cemilan
         </button>
       </div>
+<<<<<<< HEAD
       <div className="menu-container">
         <div className={`menu-details ${selectedMenu ? "active" : ""}`}>
           {selectedMenu && (
@@ -131,6 +132,34 @@ const Menu = () => {
             </div>
           ))}
         </div>
+=======
+      <div className="menu-items">
+        {menuItems.map((item, index) => {
+          const imageUrl = `http://127.0.0.1:8081/images/${item.gambar}`;
+          return (
+            <div className="menu-item" key={index}>
+              <img
+                src={imageUrl}
+                alt={item.nama_menu}
+                className="menu-item-image"
+              />
+              <h3 className="menu-item-name">{item.nama_menu}</h3>
+              <p className="menu-item-description">
+                {item.deskripsi} <a href="#detail">Detail</a>
+              </p>
+              <div className="menu-item-footer">
+                <span className="menu-item-price">{item.harga}</span>
+                <button
+                  className="add-to-cart-button"
+                  onClick={() => addToCart(item)}
+                >
+                  +
+                </button>
+              </div>
+            </div>
+          );
+        })}
+>>>>>>> 47a7261cc0724c35e8e3150d060bfa0333c3f92f
       </div>
     </div>
   );

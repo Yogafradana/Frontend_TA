@@ -41,6 +41,7 @@ const FoodDisplay = ({ category }) => {
         {bestSellerResponse != null && bestSellerResponse.length > 0
           ? bestSellerResponse.map((item, index) => {
               if (category === "All" || category === item.category) {
+                const imageUrl = `http://127.0.0.1:8081/images/${item.gambar}`;
                 return (
                   <FoodItem
                     key={index}
@@ -49,7 +50,7 @@ const FoodDisplay = ({ category }) => {
                     name={item.nama_menu}
                     description={item.deskripsi}
                     price={item.harga}
-                    image={"http://127.0.0.1:8000" + item.gambar}
+                    image={imageUrl}
                   />
                 );
               }
@@ -62,6 +63,7 @@ const FoodDisplay = ({ category }) => {
         {recommendationResponse != null && recommendationResponse.length > 0
           ? recommendationResponse.map((item, index) => {
               if (category === "All" || category === item.category) {
+                const imageUrl = `http://127.0.0.1:8081/images/${item.gambar}`;
                 return (
                   <FoodItem
                     key={index}
@@ -70,7 +72,11 @@ const FoodDisplay = ({ category }) => {
                     name={item.nama_menu}
                     description={item.deskripsi}
                     price={item.harga}
+<<<<<<< HEAD
                     image={"http://127.0.0.1:8001" + item.gambar}
+=======
+                    image={imageUrl}
+>>>>>>> 47a7261cc0724c35e8e3150d060bfa0333c3f92f
                   />
                 );
               }
