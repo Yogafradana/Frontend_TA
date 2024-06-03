@@ -1,57 +1,56 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios'; // Import axios untuk melakukan HTTP request
 import './ReviewForm.css';
 
 const ReviewForm = () => {
-  const [nama, setNama] = useState('');
+  const [nama, setName] = useState('');
   const [comment, setComment] = useState('');
   const [rating, setRating] = useState(0);
-  const [submitted, setSubmitted] = useState(false); // State untuk menandai apakah formulir sudah dikirim
-  
+  const [submitted, setSubmitted] = useState(false);
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = { nama, comment, rating };
-  
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/reviews', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+      // Kirim data ke API
+      const response = await axios.post('http://127.0.0.1:8000/api/reviews', {
+        nama,
+        comment,
+        rating,
       });
-  
-      if (!response.ok) {
-        throw new Error('Failed to submit review');
-      }
-  
+      console.log('Response:', response.data);
       setSubmitted(true);
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error submitting review:', error);
+      // Tampilkan pesan error kepada pengguna jika diperlukan
     }
   };
-  
+
   return (
     <div>
-      {submitted ? ( // Menampilkan formulir terima kasih jika submitted true
+      {submitted ? (
         <div className="thank-you">
-          <h2>Terima kasih atas ulasannya, {nama}!</h2>
-          <button onClick={() => setSubmitted(false)}>Kirim ulasan lainnya</button>
+          <h2>Terima kasih !!!</h2>
+          <p>Sudah Mengisi Ulasan Kami </p>
+          <div>
+            <button onClick={() => navigate('/')}>Kembali ke halaman utama</button>
+          </div>
         </div>
-      ) : ( // Menampilkan formulir ulasan jika submitted false
+      ) : ( 
+        
         <form className="review-form" onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="nama">Nama:</label>
+            <label htmlFor="name">Nama:</label>
             <input
               type="text"
-              id="nama"
+              id="name"
               value={nama}
-              onChange={(e) => setNama(e.target.value)}
+              onChange={(e) => setName(e.target.value)}
               required
             />
-          </div>
-          <div className="form-group">
             <div className="stars">
               {[...Array(5)].map((_, index) => (
                 <FontAwesomeIcon

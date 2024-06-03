@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './CheckHistory.css';
+
 
 const CheckHistory = () => {
     const { pemesanan_id } = useParams();
@@ -47,21 +47,54 @@ const CheckHistory = () => {
             <div className="completion-message">
                 {pemesanan.status === 'selesai' && (
                     <>
-                        <h2>Sudah Selesai</h2>
-                        <p>Terimakasih Sudah Order Di Cafe Microdata</p>
-                        <button className="review-button" onClick={() => navigate('/reviewform')}>Ulasan</button>
+                        <div className="informasiaja-content">
+                            <div className="informasiaja-text">
+                                <h1>Sudah Selesai</h1><br />
+                                Terimakasih Sudah Order Di Cafe Microdata
+                            </div>
+                            <div className="informasiaja-button">
+                                <button>Ulasan</button>
+                            </div>
+                        </div>
+
                     </>
                 )}
                 {pemesanan.status === 'pending' && (
-                    <>
-                        <h2>Pesanan Diterima di Dapur</h2>
-                        <p>Pesanan dalam antrian dapur</p>
+                <>
+                    <div className="informasiaja-container">
+                    <div className="informasiaja-content">
+                    <div className="informasiaja-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" stroke="#4CAF50" strokeWidth="2"/>
+                    <path d="M8 12.5L11 15.5L16 10.5" stroke="#4CAF50" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                        </div>
+                        <div className="informasiaja-message">
+                            Pesanan Anda Telah Berhasil Dikirim Ke Dapur
+                        </div>
+                    </div>
+                    </div>
                     </>
                 )}
                 {pemesanan.status === 'proses' && (
                     <>
-                        <h2>Pesanan Sedang Diproses</h2>
-                        <p>Silakan tunggu pesanan Anda sedang diproses.</p>
+                       <div className="informasiaja-content">
+                        <div className="informasiaja-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2V6" stroke="#8B4513" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M12 18V22" stroke="#8B4513" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M4.93 4.93L7.76 7.76" stroke="#8B4513" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M16.24 16.24L19.07 19.07" stroke="#8B4513" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M2 12H6" stroke="#8B4513" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M18 12H22" stroke="#8B4513" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M4.93 19.07L7.76 16.24" stroke="#8B4513" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M16.24 7.76L19.07 4.93" stroke="#8B4513" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                        </div>
+                    <div className="informasiaja-text">
+                       <h1>Pesanan Sedang Diproses</h1>
+                    </div>
+                    </div>
                     </>
                 )}
             </div>
