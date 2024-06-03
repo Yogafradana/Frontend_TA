@@ -72,11 +72,11 @@ const FoodDisplay = ({ category }) => {
                     name={item.nama_menu}
                     description={item.deskripsi}
                     price={item.harga}
-<<<<<<< HEAD
-                    image={"http://127.0.0.1:8001" + item.gambar}
-=======
+
+                    
+
                     image={imageUrl}
->>>>>>> 47a7261cc0724c35e8e3150d060bfa0333c3f92f
+
                   />
                 );
               }
