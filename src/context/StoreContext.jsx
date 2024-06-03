@@ -1,46 +1,56 @@
-import { createContext, useEffect, useState } from "react";
-import { food_list } from "../assets/assets";
+import { createContext, useEffect, useState, useReducer } from "react";
 
 export const StoreContext = createContext(null);
 
+const initialState = {
+  cartItems: [],
+};
+
+const storeReducer = (state, action) => {
+  switch (action.type) {
+    case "ADD_TO_CART":
+      return {
+        ...state,
+        cartItems: [...state.cartItems, action.payload],
+      };
+    case "REMOVE_FROM_CART":
+      return {
+        ...state,
+        cartItems: state.cartItems.filter((item) => item.menu_id !== action.payload),
+      };
+    default:
+      return state;
+  }
+};
+
 const StoreContextProvider = (props) => {
-  const [cartItems, setcartItems] = useState([]);
+  const [state, dispatch] = useReducer(storeReducer, initialState);
 
   const addToCart = (item) => {
-    let test = cartItems
-    test.push(item)
-    setcartItems(test);
-
-    // if (!cartItems[itemId]) {
-    //   setcartItems((prev) => ({ ...prev, [itemId]: 1 }));
-    // } else {
-    //   setcartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
-    // }
+    dispatch({ type: "ADD_TO_CART", payload: item });
   };
 
-  const removeFromCart = (itemId) => {
-    setcartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
+  const removeFromCart = (menu_id) => {
+    dispatch({ type: "REMOVE_FROM_CART", payload: menu_id });
   };
 
   const getTotalCartAmount = () => {
-    let totalAmout = 0;
-    for (const item in cartItems) {
-      if (cartItems[item] > 0) {
-        let itemInfo = food_list.find((product) => product._id === item);
-        totalAmout += itemInfo.price * cartItems[item] ;
-      }
-    }
-    return totalAmout;
+    //menghitung total
+    let total = 0;
+    state.cartItems.forEach((item) => {
+      total += item.harga;
+    });
+    return total;
+    
   };
 
   const contextValue = {
-    food_list,
-    cartItems,
-    setcartItems,
+    cartItems: state.cartItems,
     addToCart,
     removeFromCart,
     getTotalCartAmount,
   };
+
   return (
     <StoreContext.Provider value={contextValue}>
       {props.children}

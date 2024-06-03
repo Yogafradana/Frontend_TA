@@ -5,8 +5,7 @@ import { StoreContext } from "../../context/StoreContext";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const { cartItems, removeFromCart, getTotalCartAmount } =
-    useContext(StoreContext);
+  const { cartItems, removeFromCart, getTotalCartAmount } = useContext(StoreContext);
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
@@ -68,24 +67,25 @@ const Cart = () => {
     return map;
   };
 
-  function handleCheckout() {
+  const handleCheckout = () => {
+  
     const orderData = {
-      nama_pengunjung: "",
-      meja_id: table,
+      nama_pengunjung: name,
+      meja_id: parseInt(table), // Pastikan meja_id adalah angka
       menus: newCartItem.map((item) => ({
         menu_id: item.menu_id,
-        jumlah: item.jumlah,
-        subtotal: item.harga * item.jumlah,
+        jumlah: parseInt(item.jumlah), // Pastikan jumlah adalah angka
+        subtotal: parseFloat(item.harga) * parseInt(item.jumlah), // Pastikan harga adalah angka
       })),
-      keterangan: "",
-      total_harga: getTotalCartAmount(),
+      keterangan: additionalInfo || "", // Pastikan keterangan tidak null
+      total_harga: getTotalCartAmount(), // Total harga sudah berupa angka
     };
 
     axios
       .post("http://127.0.0.1:8000/api/pemesanan", orderData)
       .then((response) => {
         console.log("Order successfully placed:", response.data);
-        navigate("/order-confirmation");
+        navigate(`/order-history/${response.data.pemesanan_id}`); // Pindah ke halaman detail pesanan
       })
       .catch((error) => {
         console.error("There was an error placing the order!", error);
@@ -175,17 +175,18 @@ const Cart = () => {
             <hr />
             <div className="cart-total-details">
               <p>Delivery fee</p>
-              <p>Rp{getTotalCartAmount() === 0 ? 0 : 2}</p>
+              <p>Rp{getTotalCartAmount() === 0 ? 0 : 2000}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <b>Total</b>
               <b>
-                Rp{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}
+                Rp{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2000}
               </b>
             </div>
           </div>
           <button onClick={handleCheckout}>Checkout</button>
+
         </div>
         <div className="cart-promocode"></div>
       </div>
