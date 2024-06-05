@@ -1,16 +1,66 @@
+.food-display-container {
+  text-align: center;
+  padding: 50px 0;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #000; /* Change this color to your preference */
+}
+
 .food-display {
-  margin-top: 30px;
+  color: #fff;
+  background: url('/public/background-image.png') no-repeat ;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 0px #00000015;
+
 }
 
-.food-display h2 {
-  font-size: max(2vw, 24px);
-  font-weight: 600;
+.food-display .content {
+  max-width: 1200px;
+  margin: auto;
 }
 
-.food-display-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  margin-top: 30px;
-  gap: 30px;
-  row-gap: 50px;
+.food-display .description {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.food-display .text-content {
+  flex: 1;
+  text-align: left;
+  margin-right: 50px;
+}
+
+.food-display .text-content h3 {
+  font-size: 2rem;
+  font-family: 'Cursive', sans-serif;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.food-display .text-content p {
+  font-size: 1rem;
+  margin: 20px 0;
+  line-height: 1.5;
+  color: #fff;
+}
+
+.food-display .text-content .btn {
+  background-color: #ff6f61;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+}
+
+.food-display .image-content {
+  flex: 1;
+}
+
+.food-display .image-content img {
+  width:50%;
+  height: auto;
 }
