@@ -1,0 +1,86 @@
+.informasi4 {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+header h1 {
+  text-align: center;
+  color: #b57224;
+}
+
+.completion-message {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.review-button {
+  background-color: #a05a2c;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.order-summary,
+.order-items {
+  background: #f9f9f9;
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-summary h3,
+.order-items h3 {
+  background: #a05a2c;
+  color: white;
+  padding: 10px;
+  border-radius: 8px 8px 0 0;
+}
+
+.order-details {
+  padding: 20px;
+}
+
+.order-id {
+  text-align: center;
+  font-size: 24px;
+  margin: 20px 0;
+}
+
+.order-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.order-info-grid p {
+  margin: 0;
+}
+
+.order-items table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.order-items th,
+.order-items td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.back-button {
+  background-color: #a05a2c;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  display: block;
+  margin: 20px auto;
+}
+
+footer p {
+  text-align: center;
+  color: #aaa;
+  margin-top: 20px;
+}

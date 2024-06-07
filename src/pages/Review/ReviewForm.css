@@ -1,0 +1,97 @@
+/* src/components/ReviewForm.css */
+
+.review-form {
+  background-color: #fff; /* Ubah warna latar belakang menjadi putih */
+  padding: 20px;
+  border-radius: 15px; /* Sesuaikan sudut border */
+  max-width: 800px; /* Sesuaikan lebar maksimum */
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #8B4513; /* Border warna coklat */
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #8B4513; /* Garis bawah warna coklat */
+  padding: 10px 0; /* Tambahkan padding untuk ruang */
+}
+
+label {
+  color: #8B4513; /* Ubah warna teks label */
+  flex: 1;
+  font-size: 16px;
+}
+
+input[type="text"] {
+  flex: 3;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-left: 10px; /* Tambahkan margin kiri untuk jarak */
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  resize: vertical;
+  height: 100px;
+  margin-top: 10px; /* Tambahkan margin atas */
+}
+
+.stars {
+  display: flex;
+  align-items: center;
+}
+
+.star {
+  font-size: 24px;
+  cursor: pointer;
+  color: #ddd;
+  transition: color 0.2s;
+}
+
+.star.filled {
+  color: #ffc107;
+}
+
+button {
+  background-color: #8B4513; /* Ubah warna tombol menjadi coklat */
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  align-self: flex-end; /* Align button to the right */
+  margin-top: 10px; /* Tambahkan margin atas */
+}
+
+button:hover {
+  background-color: #6d4c41; /* Ubah warna hover */
+}
+
+.thank-you{
+  text-align: center;
+  margin-top: 20px;
+  color: #8B4513;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  border: #ddd 1px solid;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
+
+}
