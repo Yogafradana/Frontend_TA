@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 import "./Menu.css";
 import NominalFormat from "../../components/NumberFormat/NumberFormat";
 import Banner from "../../components/Navbar/Banner";
@@ -10,6 +11,11 @@ const Menu = () => {
 	const [menuItems, setMenuItems] = useState([]);
 	const [category, setCategory] = useState("Semua");
 	const [selectedMenu, setSelectedMenu] = useState(null);
+	const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/cart');
+  };
 	// const [cart, setCart] = useState([]);
 
 	useEffect(() => {
@@ -59,6 +65,7 @@ const Menu = () => {
 			}
 		}
 	};
+	
 
 	// const addToCart = (item) => {
 	// 	console.log("cart", cart)
@@ -180,6 +187,9 @@ const Menu = () => {
 							test total:
 							<NominalFormat displayType={'text'} className={""} dis value={cumTotalCart()} />
 							<br/>
+							<button className="btn btn-primary" onClick={handleClick}>
+							Pesan
+							</button>
 							{/* <button onClick={() => setCart([])}>Test Pesan</button> */}
 						</div> : null
 				}

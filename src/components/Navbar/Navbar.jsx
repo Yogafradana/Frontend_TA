@@ -45,7 +45,7 @@ const Navbar = () => {
             Hubungi Kami
           </li>
         </Link>
-        <Link to="/cart">
+        <Link to="/checkorder">
           <li className="cart-icon">
             {/* <img src={assets.basket_icon} alt="Cart" />
             <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div> */}
