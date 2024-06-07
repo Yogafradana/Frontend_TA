@@ -11,11 +11,12 @@
 
 .food-display {
   color: #fff;
-  background: url('/public/background-image.png') no-repeat ;
-  padding: 30px;
+  background-image: url('/public/background-image.png');
   border-radius: 15px;
   box-shadow: 0px 0px 0px #00000015;
-
+  background-size: cover;
+  position: relative;
+  height: 500px;
 }
 
 .food-display .content {
@@ -56,11 +57,44 @@
   font-size: 1rem;
 }
 
+.food-display-parent-banner {
+  position: relative;
+  width: 500px;
+  height: 500px;
+}
+
 .food-display .image-content {
+  position: absolute;
+  z-index: 2000;
+  top: 6%;
+  right: 14%;
+  width: 600px;
   flex: 1;
 }
+
 
 .food-display .image-content img {
   width:50%;
   height: auto;
+}
+
+.food-display-transparant {
+  position: absolute;
+  bottom: 0;
+  /* background: #532D07; */
+  background: rgba(121, 77, 2, 0.4); /* Black background with 0.5 opacity */
+  color: #f1f1f1;
+  width: 100%;
+  padding: 20px;
+  height: 100%;
+}
+
+.food-display-content-text {
+  padding: 50px;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
 }

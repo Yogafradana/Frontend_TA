@@ -2,6 +2,7 @@ import "./HubungiKami.css";
 import React, { useState } from "react";
 import axios from "axios";
 import Header from "../../components/Header/Header";
+import Banner from "../../components/Navbar/Banner";
 
 const HubungiKami = () => {
   const [formData, setFormData] = useState({
@@ -35,6 +36,7 @@ const HubungiKami = () => {
 
   return (
     <>
+    <Banner />
       <div>
         <Header />
       </div>

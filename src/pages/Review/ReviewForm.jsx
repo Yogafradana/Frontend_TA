@@ -4,6 +4,7 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; // Import axios untuk melakukan HTTP request
 import './ReviewForm.css';
+import Banner from '../../components/Navbar/Banner';
 
 const ReviewForm = () => {
   const [nama, setName] = useState('');
@@ -31,6 +32,7 @@ const ReviewForm = () => {
 
   return (
     <div>
+      <Banner />
       {submitted ? (
         <div className="thank-you">
           <h2>Terima kasih !!!</h2>

@@ -2,6 +2,7 @@
     position: relative;
     text-align: center;
     color: white;
+    height: 637px;
   }
   
   .bottom-left {
@@ -30,9 +31,12 @@
   
   .centered {
     position: absolute;
-    top: 50%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 100%;
+    padding: 120px;
+    text-align: left;
   }
   .gambar-bacground-home{
     width: 100%;
@@ -42,3 +46,34 @@
     padding: 0;
     
   }
+
+  .p-4 {
+    padding: 30px 90px;
+  }
+
+  .banner-header {
+    width: 550px;
+    font-size: 40px;
+    color: #FFFFFF;
+  }
+
+  .banner-sub-header {
+    color: #FFB271;
+  }
+
+  .button-header {
+    padding-top: 80px;
+    padding: 24px 12px 24px 12px;
+    width: 257px;
+    height: 73px;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 80px;
+    display: flex;
+     justify-content: center;
+     align-items: center;
+     gap: 10px;
+     border-radius: 12px;
+     background: #A86227;
+  }
+  

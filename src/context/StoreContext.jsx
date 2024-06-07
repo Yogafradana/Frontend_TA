@@ -7,6 +7,7 @@ const initialState = {
 };
 
 const storeReducer = (state, action) => {
+  console.log("action.payload", action.payload)
   switch (action.type) {
     case "ADD_TO_CART":
       return {
@@ -38,7 +39,7 @@ const StoreContextProvider = (props) => {
     //menghitung total
     let total = 0;
     state.cartItems.forEach((item) => {
-      total += item.harga;
+      total += Number(item.harga);
     });
     return total;
     

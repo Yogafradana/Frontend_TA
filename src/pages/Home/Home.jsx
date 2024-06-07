@@ -5,12 +5,14 @@ import ExploreMenu from "../../components/ExploreMenu/ExploreMenu";
 import FoodDisplay from "../../components/FoodDisplay/FoodDisplay";
 import AppDownload from "../../components/AppDownload/AppDownload";
 import Navbar from "../../components/Navbar/Navbar";
+import Banner from "../../components/Navbar/Banner";
 
 const Home = () => {
   const [category, setCategory] = useState("All");
 
   return (
     <div>
+      <Banner />
       {/* <Header /> */}
    
       
