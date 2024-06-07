@@ -5,7 +5,7 @@
   align-items: center;
 }
 
-.navbar.logo {
+.navbar .logo {
   width: 150px;
 }
 
@@ -45,10 +45,16 @@
 
 .navbar li {
   cursor: pointer;
+  position: relative;
 }
 
-.navbar-search-icon {
-  position: relative;
+.cart-icon {
+  display: flex;
+  align-items: center;
+}
+
+.cart-icon img {
+  width: 24px;
 }
 
 .navbar-search-icon .dot {

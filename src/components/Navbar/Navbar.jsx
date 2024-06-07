@@ -24,12 +24,12 @@ const Navbar = () => {
           </li>
         </Link>
         <Link to="/menu">
-        <li
-          onClick={() => setMenu("Menu")}
-          className={menu === "Menu" ? "active" : ""}
-        >
-          Menu
-        </li>
+          <li
+            onClick={() => setMenu("Menu")}
+            className={menu === "Menu" ? "active" : ""}
+          >
+            Menu
+          </li>
         </Link>
         <Link to="/tentang-kami">
           <li
@@ -47,17 +47,13 @@ const Navbar = () => {
             Hubungi Kami
           </li>
         </Link>
+        <Link to="/cart">
+          <li className="cart-icon">
+            <img src={assets.basket_icon} alt="Cart" />
+            <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
+          </li>
+        </Link>
       </ul>
-      <div className="navbar-right">
-        <img src={assets.search_icon} alt="" />
-        <div className="navbar-search-icon">
-          <Link to="/cart">
-            <img src={assets.basket_icon} alt="" />{" "}
-          </Link>
-          <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
-        </div>
-        <button>Sign in</button>
-      </div>
     </div>
   );
 };

@@ -11,7 +11,7 @@ const Header = () => {
           <span className="brown-text">Cafe Microdata</span>
         </h2>
         <button onClick={() => (window.location.href = "/menu")}>
-          Order Now
+          Pesan Sekarang
         </button>
       </div>
     </div>

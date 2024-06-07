@@ -17,7 +17,15 @@ const App = () => {
   return (
     <>
       <div className="app">
-        <Navbar />
+        {/* <Navbar /> */}
+        <div className="container remove-padding">
+  <img className ="gambar-bacground-home"src="http://localhost:3000/static/media/header.907d2ef5e6c4cec6edff.png" alt="Snow"/>
+  <div className="bottom-left">Bottom Left</div>
+  <div className="top-left">Top Left</div>
+  <div className="top-right"><Navbar/></div>
+  <div className="bottom-right">Bottom Right</div>
+  <div className="centered">Centered</div>
+</div>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />

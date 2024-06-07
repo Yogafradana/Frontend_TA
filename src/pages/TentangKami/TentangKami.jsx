@@ -6,7 +6,7 @@ const TentangKami = () => {
   return (
     <>
       <div>
-        <Header />
+        {/* <Header /> */}
       </div>
       <div className="tentang-kami">
         <h3 align="center">Tentang Kami</h3>
