@@ -105,3 +105,23 @@
     display: none;
   }
 }
+
+@media (max-width: 500px) {
+  .navbar-hp {
+    display: inline;
+    width: 120px;
+  }
+  .navbar {
+    display: none;
+  }
+}
+
+@media (min-width: 500px) {
+  .navbar-hp {
+    display: none;
+    width: 120px;
+  }
+  .navbar {
+    display: inline;
+  }
+}

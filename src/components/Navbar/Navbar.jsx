@@ -24,12 +24,12 @@ const Navbar = () => {
           </li>
         </Link>
         <Link to="/menu">
-        <li
-          onClick={() => setMenu("Menu")}
-          className={menu === "Menu" ? "active" : ""}
-        >
-          Menu
-        </li>
+          <li
+            onClick={() => setMenu("Menu")}
+            className={menu === "Menu" ? "active" : ""}
+          >
+            Menu
+          </li>
         </Link>
         <Link to="/tentang-kami">
           <li
