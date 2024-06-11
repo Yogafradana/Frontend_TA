@@ -5,7 +5,7 @@ import { assets } from "../../assets/assets";
 const Banner = () => {
     return (
         <div className="container remove-padding">
-            <img className="gambar-bacground-home" src="http://localhost:3000/static/media/header.907d2ef5e6c4cec6edff.png" alt="Snow" />
+            <img className="gambar-bacground-home" src="http://localhost:3001/static/media/header.907d2ef5e6c4cec6edff.png" alt="Snow" />
             {/* <div className="bottom-left">Bottom Left</div> */}
             <div className="top-left p-4">
                 <Link to="/">

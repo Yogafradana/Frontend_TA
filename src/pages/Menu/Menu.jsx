@@ -83,7 +83,7 @@ const Menu = () => {
   };
 
   const handleKeterangan = (e, item) => {
-    console.log("item", item);
+    // console.log("item", item);
     let c = {
       id: item.id,
       keterangan: e,
@@ -139,7 +139,7 @@ const Menu = () => {
             }}
           >
             {menuItems.map((item, index) => {
-              console.log("item", item);
+            //   console.log("item", item);
               const imageUrl = `http://127.0.0.1:8081/images/${item.gambar}`;
               return (
                 <div className="menu-item" key={index}>
@@ -202,7 +202,7 @@ const Menu = () => {
               Daftar Pemesanan
               <div className="mb-5">
                 {cartItems.map((item, index) => {
-                  console.log("item", item);
+                //   console.log("item", item);
                   return (
                     <div className="menu-card-order-box-item" key={index}>
                       {item.nama_menu}
