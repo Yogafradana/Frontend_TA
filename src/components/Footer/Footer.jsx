@@ -8,29 +8,35 @@ const Footer = () => {
       <div className="footer-content">
         <div className="footer-content-left">
           <img src={assets.logo} alt="" />
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </p>
           <div className="footer-social-icons">
             <img src={assets.facebook_icon} alt="" />
             <img src={assets.twitter_icon} alt="" />
             <img src={assets.linkedin_icon} alt="" />
           </div>
         </div>
-        <div className="footer-content-center">
-          <h2>COMPANY</h2>
+
+        <div className="footer-content-column">
+          <h2>Quick Link</h2>
           <ul>
             <li>Home</li>
-            <li>About us</li>
-            <li>Delivery</li>
-            <li>Privacy policy</li>
+            <li>Tentang</li>
+            <li>Menu</li>
+            <li>Hubungi Kami</li>
           </ul>
         </div>
-        <div className="footer-content-right">
-          <h2>GET IN TOUCH</h2>
+
+        <div className="footer-content-column">
+          <h2>Information</h2>
+          <ul>
+            <li>Home</li>
+            <li>Tentang</li>
+            <li>Menu</li>
+            <li>Hubungi Kami</li>
+          </ul>
+        </div>
+
+        <div className="footer-content-column">
+          <h2>Opening Hours</h2>
           <ul>
             <li>+62-853-5720-9322</li>
             <li>yogafradana69@gmail.com</li>
@@ -39,7 +45,7 @@ const Footer = () => {
       </div>
       <hr />
       <p className="footer-copyright">
-        Copyright 2024 by Frada - All Right Reserved
+        Copyright@2024 PKL-POLINELA-2024
       </p>
     </div>
   );

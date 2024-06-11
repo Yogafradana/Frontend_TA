@@ -1,15 +1,17 @@
 import React from "react";
 import "./TentangKami.css";
 import Header from "../../components/Header/Header";
+import Banner from "../../components/Navbar/Banner";
 
 const TentangKami = () => {
   return (
     <>
+    <Banner />
       <div>
-        <Header />
+        {/* <Header /> */}
       </div>
       <div className="tentang-kami">
-        <h3 align="center">Tentang Kami</h3>
+        <h2 className="home-title-menu-section">Tentang Kami</h2>
         <p>
           Butuh tempat ngoding yang nyaman dan asyik? Datang ke Cafe Microdata,
           tempat nongkrong ideal bagi para programmer! <br />

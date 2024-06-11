@@ -1,90 +1,42 @@
-import React, { useEffect, useState } from "react";
-import "./FoodDisplay.css";
-import FoodItem from "../FoodItem/FoodItem";
-import axios from "axios";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './FoodDisplay.css';
 
-const FoodDisplay = ({ category }) => {
-  const [bestSellerResponse, setBestSellerResponse] = useState(null);
-  const [recommendationResponse, setRecommendationResponse] = useState(null);
+const FoodDisplay = () => {
+	return (
+		<div className="food-display-container">
+			{/* <h2 className="section-title">Tentang Kami</h2> */}
+			<h2 className="home-title-menu-section">Tentang Kami</h2>
+			<div className="food-display">
+				<div className="content2">
+					<div className="description ">
+						<div className="text-content">
+							<div className='food-display-transparant'>
+								<div className="food-display-content-text">
+								<h3>Cafe Microdata</h3>
+								<p>
+									Butuh tempat ngoding yang asyik dan nyaman? Cafe Microdata bukan
+									sekedar tempat nongkrong biasa. Disini, kamu bisa menikmati
+									suasana yang tenang dan santai, cocok untuk fokus menyelesaikan
+									codingmu.
+								</p>
+								<Link to="/tentang-kami" className="btn btn-primary">
+									Selengkapnya
+								</Link>
+								</div>
+							</div>
 
-  useEffect(() => {
-    getBestSellerMenu();
-    getRecommendationMenu();
-  }, []);
-
-  function getBestSellerMenu() {
-    axios
-      .get("http://127.0.0.1:8000/api/menu/best")
-      .then(function (response) {
-        setBestSellerResponse(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
-
-  function getRecommendationMenu() {
-    axios
-      .get("http://127.0.0.1:8000/api/menu/rekomendasi")
-      .then(function (response) {
-        setRecommendationResponse(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
-
-  return (
-    <div className="food-display" id="food-display">
-      <h2>Best Seller</h2>
-      <div className="food-display-list">
-        {bestSellerResponse != null && bestSellerResponse.length > 0
-          ? bestSellerResponse.map((item, index) => {
-              if (category === "All" || category === item.category) {
-                const imageUrl = `http://127.0.0.1:8081/images/${item.gambar}`;
-                return (
-                  <FoodItem
-                    key={index}
-                    item={item}
-                    id={item.id}
-                    name={item.nama_menu}
-                    description={item.deskripsi}
-                    price={item.harga}
-                    image={imageUrl}
-                  />
-                );
-              }
-            })
-          : "Loading ..."}
-      </div>
-
-      <h2>Rekomendasi</h2>
-      <div className="food-display-list">
-        {recommendationResponse != null && recommendationResponse.length > 0
-          ? recommendationResponse.map((item, index) => {
-              if (category === "All" || category === item.category) {
-                const imageUrl = `http://127.0.0.1:8081/images/${item.gambar}`;
-                return (
-                  <FoodItem
-                    key={index}
-                    item={item}
-                    id={item.id}
-                    name={item.nama_menu}
-                    description={item.deskripsi}
-                    price={item.harga}
-
-                    
-
-                    image={imageUrl}
-
-                  />
-                );
-              }
-            })
-          : "Loading ..."}
-      </div>
-    </div>
-  );
+						</div>
+						<div className="food-display-parent-banner">
+						<div className="image-content">
+							<img src="/coffee-cup-image.png" alt="Coffee Cup" />
+						</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default FoodDisplay;

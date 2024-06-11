@@ -5,7 +5,8 @@ import { StoreContext } from "../../context/StoreContext";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const { cartItems, removeFromCart, getTotalCartAmount } = useContext(StoreContext);
+  const { cartItems, removeFromCart, getTotalCartAmount } =
+    useContext(StoreContext);
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
@@ -44,7 +45,7 @@ const Cart = () => {
         nama_menu: groupedCart[i][1][0].nama_menu,
         deskripsi: groupedCart[i][1][0].deskripsi,
         harga: price,
-        menu_id: groupedCart[i][1][0].menu_id,
+        id: groupedCart[i][1][0].id,
         kategori: groupedCart[i][1][0].kategori,
         jumlah: groupedCart[i][1].length,
         gambar: groupedCart[i][1][0].gambar,
@@ -68,12 +69,12 @@ const Cart = () => {
   };
 
   const handleCheckout = () => {
-  
+    console.log("newCartItem", newCartItem);
     const orderData = {
       nama_pengunjung: name,
       meja_id: parseInt(table), // Pastikan meja_id adalah angka
       menus: newCartItem.map((item) => ({
-        menu_id: item.menu_id,
+        menu_id: item.id,
         jumlah: parseInt(item.jumlah), // Pastikan jumlah adalah angka
         subtotal: parseFloat(item.harga) * parseInt(item.jumlah), // Pastikan harga adalah angka
       })),
@@ -85,15 +86,18 @@ const Cart = () => {
       .post("http://127.0.0.1:8000/api/pemesanan", orderData)
       .then((response) => {
         console.log("Order successfully placed:", response.data);
-        navigate(`/order-history/${response.data.pemesanan_id}`); // Pindah ke halaman detail pesanan
+        // navigate(`/order-history/${response.data.pemesanan_id}`); // Pindah ke halaman detail pesanan
       })
       .catch((error) => {
         console.error("There was an error placing the order!", error);
       });
-  }
+  };
+
+  console.log("NewCartItem", newCartItem);
 
   return (
     <div className="cart">
+      test
       <div className="cart-inputs">
         <div className="input-group">
           <label htmlFor="name">Name:</label>
@@ -120,40 +124,45 @@ const Cart = () => {
           </select>
         </div>
       </div>
-
       <div className="cart-items">
         <div className="cart-items-title">
           <p>Items</p>
           <p>Title</p>
           <p>Price</p>
           <p>Quantity</p>
+          <p>Keterangan</p>
           <p>Total</p>
           <p>Remove</p>
         </div>
         <br />
         <hr />
         {newCartItem &&
-          newCartItem.map((item, index) => (
-            <div key={index}>
-              <div className="cart-items-title cart-items-item">
-                <img src={"http://127.0.0.1:8000" + item.gambar} alt="" />
-                <p>{item.nama_menu}</p>
-                <p>${item.harga}</p>
-                <p>{item.jumlah}</p>
-                <p>${item.harga * item.jumlah}</p>
-                <p
-                  onClick={() => removeFromCart(item.menu_id)}
-                  className="cross"
-                >
-                  x
-                </p>
-              </div>
-              <hr />
-            </div>
-          ))}
+          newCartItem.map(
+            (item, index) => (
+              console.log("item", item),
+              (
+                <div key={index}>
+                  <div className="cart-items-title cart-items-item">
+                    <img src={"http://127.0.0.1:8000" + item.gambar} alt="" />
+                    <p>{item.nama_menu}</p>
+                    <p>${item.harga}</p>
+                    <p>${item.keterangan}test</p>
+                    <p>{item.jumlah}</p>
+                    <p>${item.harga * item.jumlah}</p>
+                    <p
+                      onClick={() => removeFromCart(item.menu_id)}
+                      className="cross"
+                    >
+                      x
+                    </p>
+                  </div>
+                  <hr />
+                </div>
+              )
+            )
+          )}
       </div>
-
-      <div className="additional-info">
+      {/* <div className="additional-info">
         <label htmlFor="additional-info">Keterangan:</label>
         <textarea
           id="additional-info"
@@ -162,8 +171,7 @@ const Cart = () => {
           rows="4"
           placeholder="Enter any additional notes here..."
         />
-      </div>
-
+      </div> */}
       <div className="cart-bottom">
         <div className="cart-total">
           <h2>Cart Totals</h2>
@@ -186,7 +194,6 @@ const Cart = () => {
             </div>
           </div>
           <button onClick={handleCheckout}>Checkout</button>
-
         </div>
         <div className="cart-promocode"></div>
       </div>

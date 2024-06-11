@@ -1,24 +1,37 @@
-.app-download {
-  margin: auto auto;
-  margin-top: 100px;
-  font-size: max(3vw, 20px);
+.testimonial-container {
+  padding: 20px;
   text-align: center;
-  font-weight: 500;
 }
 
-.app-download-platforms {
+.testimonial-container h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.testimonial-list {
   display: flex;
   justify-content: center;
-  gap: max(2vw, 10px);
+  align-items: center;
 }
 
-.app-download-platforms img {
-  width: max(30vw, 120px);
-  max-width: 180px;
-  transition: 0.5s;
-  cursor: pointer;
+.testimonial-item {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  text-align: left;
 }
 
-.app-download-platforms img:hover {
-  transform: scale(1.05);
+.stars {
+  color: gold;
+  margin-bottom: 10px;
+}
+
+.slick-prev, .slick-next {
+  color: #000;
+}
+
+.slick-dots li button:before {
+  color: #000;
 }

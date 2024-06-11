@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./CheckOrder.css";
+import Banner from "../../components/Navbar/Banner";
 
 const CheckOrder = () => {
   const [pemesanan_id, setOrderCode] = useState("");
@@ -15,6 +16,8 @@ const CheckOrder = () => {
   };
 
   return (
+    <>
+    <Banner />
     <div className="order-check-container">
       <h1>Cek Detail Pemesanan</h1>
       <p>Lihat Informasi yang sudah anda pesan</p>
@@ -32,6 +35,7 @@ const CheckOrder = () => {
         <button onClick={handleOrderCheck}>Cari Detail Pemesanan</button>
       </div>
     </div>
+    </>
   );
 };
 
