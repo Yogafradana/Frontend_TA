@@ -15,11 +15,11 @@
   gap: 40px;
   color: #49557e;
   font-size: 18px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .navbar-menu .active {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .navbar-right {
@@ -45,7 +45,7 @@
 
 .navbar .active {
   padding-bottom: 2px;
-  border-bottom: 2px solid #FFFFFF;
+  border-bottom: 2px solid #ffffff;
 }
 
 .navbar li {
@@ -122,5 +122,25 @@
 @media (max-width: 750px) {
   .navbar-menu {
     display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .navbar-hp {
+    display: inline;
+    width: 120px;
+  }
+  .navbar {
+    display: none;
+  }
+}
+
+@media (min-width: 500px) {
+  .navbar-hp {
+    display: none;
+    width: 120px;
+  }
+  .navbar {
+    display: inline;
   }
 }

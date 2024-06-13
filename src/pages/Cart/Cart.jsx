@@ -3,9 +3,11 @@ import axios from "axios";
 import "./Cart.css";
 import { StoreContext } from "../../context/StoreContext";
 import { useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 const Cart = () => {
-	const { cartItems, removeFromCart, getTotalCartAmount } = useContext(StoreContext);
+	const { cartItems, removeFromCart, getTotalCartAmount } =
+		useContext(StoreContext);
 	const navigate = useNavigate();
 
 	const [name, setName] = useState("");
@@ -48,6 +50,7 @@ const Cart = () => {
 				kategori: groupedCart[i][1][0].kategori,
 				jumlah: groupedCart[i][1].length,
 				gambar: groupedCart[i][1][0].gambar,
+				keterangan: groupedCart[i][1][0].keterangan,
 			});
 		}
 		setNewCartItem(newArray);
@@ -68,7 +71,7 @@ const Cart = () => {
 	};
 
 	const handleCheckout = () => {
-		console.log("newCartItem", newCartItem)
+		console.log("newCartItem", newCartItem);
 		const orderData = {
 			nama_pengunjung: name,
 			meja_id: parseInt(table), // Pastikan meja_id adalah angka
@@ -76,26 +79,55 @@ const Cart = () => {
 				menu_id: item.id,
 				jumlah: parseInt(item.jumlah), // Pastikan jumlah adalah angka
 				subtotal: parseFloat(item.harga) * parseInt(item.jumlah), // Pastikan harga adalah angka
+				keterangan: item.keterangan, // Pastikan harga adalah angka
 			})),
 			keterangan: additionalInfo || "", // Pastikan keterangan tidak null
 			total_harga: getTotalCartAmount(), // Total harga sudah berupa angka
 		};
 
-		axios.post("http://127.0.0.1:8000/api/pemesanan", orderData)
+		axios
+			.post("http://127.0.0.1:8000/api/pemesanan", orderData)
 			.then((response) => {
-				console.log("Order successfully placed:", response.data);
-				// navigate(`/order-history/${response.data.pemesanan_id}`); // Pindah ke halaman detail pesanan
+				// console.log("Order successfully placed:", response.data);
+				toast.success('Pesanan berhasil dibuat');
+				setTimeout(() => {
+					navigate(`/order-history/${response.data.id}`); // Pindah ke halaman detail pesanan
+				}, 1000);
 			})
 			.catch((error) => {
 				console.error("There was an error placing the order!", error);
 			});
-	}
+	};
 
-	console.log("NewCartItem", newCartItem)
+	console.log("NewCartItem", newCartItem);
 
 	return (
 		<div className="cart">
-			test
+			<Toaster
+				position="top-center"
+				reverseOrder={false}
+				gutter={8}
+				containerClassName=""
+				containerStyle={{}}
+				toastOptions={{
+					// Define default options
+					className: '',
+					duration: 5000,
+					style: {
+						background: '#363636',
+						color: '#fff',
+					},
+
+					// Default options for specific types
+					success: {
+						duration: 3000,
+						theme: {
+							primary: 'green',
+							secondary: 'black',
+						},
+					},
+				}}
+			/>
 			<div className="cart-inputs">
 				<div className="input-group">
 					<label htmlFor="name">Name:</label>
@@ -122,50 +154,54 @@ const Cart = () => {
 					</select>
 				</div>
 			</div>
-
 			<div className="cart-items">
 				<div className="cart-items-title">
 					<p>Items</p>
 					<p>Title</p>
 					<p>Price</p>
 					<p>Quantity</p>
+					<p>Keterangan</p>
 					<p>Total</p>
 					<p>Remove</p>
 				</div>
 				<br />
 				<hr />
 				{newCartItem &&
-					newCartItem.map((item, index) => (
-						<div key={index}>
-							<div className="cart-items-title cart-items-item">
-								<img src={"http://127.0.0.1:8000" + item.gambar} alt="" />
-								<p>{item.nama_menu}</p>
-								<p>${item.harga}</p>
-								<p>{item.jumlah}</p>
-								<p>${item.harga * item.jumlah}</p>
-								<p
-									onClick={() => removeFromCart(item.menu_id)}
-									className="cross"
-								>
-									x
-								</p>
-							</div>
-							<hr />
-						</div>
-					))}
+					newCartItem.map(
+						(item, index) => (
+							// console.log("item", item),s
+							(
+								<div key={index}>
+									<div className="cart-items-title cart-items-item">
+										<img src={"http://127.0.0.1:8000" + item.gambar} alt="" />
+										<p>{item.nama_menu}</p>
+										<p>${item.harga}</p>
+										<p>{item.jumlah}</p>
+										<p>{item.keterangan}</p>
+										<p>${item.harga * item.jumlah}</p>
+										<p
+											onClick={() => removeFromCart(item.menu_id)}
+											className="cross"
+										>
+											x
+										</p>
+									</div>
+									<hr />
+								</div>
+							)
+						)
+					)}
 			</div>
-
-			<div className="additional-info">
-				<label htmlFor="additional-info">Keterangan:</label>
-				<textarea
-					id="additional-info"
-					value={additionalInfo}
-					onChange={(e) => setAdditionalInfo(e.target.value)}
-					rows="4"
-					placeholder="Enter any additional notes here..."
-				/>
-			</div>
-
+			{/* <div className="additional-info">
+        <label htmlFor="additional-info">Keterangan:</label>
+        <textarea
+          id="additional-info"
+          value={additionalInfo}
+          onChange={(e) => setAdditionalInfo(e.target.value)}
+          rows="4"
+          placeholder="Enter any additional notes here..."
+        />
+      </div> */}
 			<div className="cart-bottom">
 				<div className="cart-total">
 					<h2>Cart Totals</h2>
@@ -188,7 +224,6 @@ const Cart = () => {
 						</div>
 					</div>
 					<button onClick={handleCheckout}>Checkout</button>
-
 				</div>
 				<div className="cart-promocode"></div>
 			</div>

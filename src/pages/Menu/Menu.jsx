@@ -119,7 +119,7 @@ const Menu = () => {
 				<div className="menu-items" style={{ gridTemplateColumns: (selectedMenu != null || (cartItems != null && cartItems.length > 0)) ? 'repeat(3, 1fr)' : 'repeat(4, 1fr)' }}>
 					{menuItems.map((item, index) => {
 						console.log("item", item)
-						const imageUrl = `http://127.0.0.1:8081/images/${item.gambar}`;
+						const imageUrl = `http://127.0.0.1:8000/assets/images/${item.gambar}`;
 						return (
 							<div className="menu-item" key={index}>
 								<img

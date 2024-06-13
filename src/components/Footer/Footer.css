@@ -21,6 +21,7 @@
 
 .footer-content-left,
 .footer-content-column,
+
 .footer-content-right {
   display: flex;
   flex-direction: column;
@@ -46,6 +47,8 @@
   width: 40px;
   margin-right: 15px;
 }
+
+
 
 .footer hr {
   width: 100%;

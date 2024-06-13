@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const storeReducer = (state, action) => {
-  console.log("action.payload", action.payload)
+  console.log("action.payload", action.payload);
   switch (action.type) {
     case "ADD_TO_CART":
       return {
@@ -17,8 +17,19 @@ const storeReducer = (state, action) => {
     case "REMOVE_FROM_CART":
       return {
         ...state,
-        cartItems: state.cartItems.filter((item) => item.menu_id !== action.payload),
+        cartItems: state.cartItems.filter(
+          (item) => item.menu_id !== action.payload
+        ),
       };
+
+    case "UPDATE_CART_ITEM":
+      return {
+        ...state,
+        cartItems: state.cartItems.map((item) =>
+          item.id === action.payload.id ? { ...item, ...action.payload } : item
+        ),
+      };
+
     default:
       return state;
   }
@@ -29,6 +40,10 @@ const StoreContextProvider = (props) => {
 
   const addToCart = (item) => {
     dispatch({ type: "ADD_TO_CART", payload: item });
+  };
+
+  const updateKeterangan = (item) => {
+    dispatch({ type: "UPDATE_CART_ITEM", payload: item });
   };
 
   const removeFromCart = (menu_id) => {
@@ -42,7 +57,6 @@ const StoreContextProvider = (props) => {
       total += Number(item.harga);
     });
     return total;
-    
   };
 
   const contextValue = {
@@ -50,6 +64,7 @@ const StoreContextProvider = (props) => {
     addToCart,
     removeFromCart,
     getTotalCartAmount,
+    updateKeterangan,
   };
 
   return (
