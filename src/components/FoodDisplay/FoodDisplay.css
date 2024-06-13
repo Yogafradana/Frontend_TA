@@ -51,9 +51,10 @@
 }
 
 .food-display .text-content .btn {
-  background-color: #ff6f61;
+  background-color: #e47f0b;
   border: none;
   padding: 10px 20px;
+  border-radius: 20px;
   font-size: 1rem;
 }
 

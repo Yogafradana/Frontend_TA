@@ -32,7 +32,6 @@ const ReviewForm = () => {
 
   return (
     <div>
-      <Banner />
       {submitted ? (
         <div className="thank-you">
           <h2>Terima kasih !!!</h2>

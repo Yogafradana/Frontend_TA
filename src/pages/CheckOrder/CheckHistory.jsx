@@ -42,7 +42,6 @@ const CheckHistory = () => {
 
     return (
         <>
-            <Banner />
             <div className="informasi4">
                 <header>
                     <h1>Cafe Microdata</h1>
@@ -55,8 +54,13 @@ const CheckHistory = () => {
                                     <h1>Sudah Selesai</h1><br />
                                     Terimakasih Sudah Order Di Cafe Microdata
                                 </div>
+
                                 <div className="informasiaja-button">
-                                    <button>Ulasan</button>
+                                    <button className="back-button" onClick={() => navigate('/reviewform')}>Ulasan</button>
+
+                                    
+
+                                    
                                 </div>
                             </div>
 

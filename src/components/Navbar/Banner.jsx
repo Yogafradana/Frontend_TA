@@ -26,7 +26,11 @@ const Banner = () => {
           <span className="banner-sub-header">Cafe Microdata</span>
         </h1>
         <button className="button-header">
-          <span>Pesan Sekarang</span>
+          {/* <span>Pesan Sekarang</span> */}
+
+          <Link to="/menu" className="btn btn-primary">
+									Pesan Sekarang
+								</Link>
           <svg
             width="24"
             height="25"

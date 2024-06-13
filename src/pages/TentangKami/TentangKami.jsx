@@ -3,10 +3,15 @@ import "./TentangKami.css";
 import Header from "../../components/Header/Header";
 import Banner from "../../components/Navbar/Banner";
 
+// Import gambar
+import gambar1 from "../../assets/gambar1.png";
+import gambar2 from "../../assets/gambar2.png";
+import gambar3 from "../../assets/gambar3.png";
+
 const TentangKami = () => {
   return (
     <>
-    <Banner />
+      <Banner />
       <div>
         {/* <Header /> */}
       </div>
@@ -49,8 +54,13 @@ const TentangKami = () => {
             Microdata.
           </li>
         </ul>
-        Datang dan rasakan sendiri pengalaman ngoding yang berbeda di Microdata!
+        <h2>Datang dan rasakan sendiri pengalaman ngoding yang berbeda di Microdata!</h2>
       </div>
+      <main className="gallery">
+        <img src={gambar1} alt="Gambar 1" />
+        <img src={gambar2} alt="Gambar 2" />
+        <img src={gambar3} alt="Gambar 3" />
+      </main>
     </>
   );
 };

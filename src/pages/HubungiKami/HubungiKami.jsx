@@ -37,11 +37,12 @@ const HubungiKami = () => {
   return (
     <>
     <Banner />
+    
       <div>
-        <Header />
       </div>
       <div className="contact-us">
         <h1>Hubungi Kami</h1>
+        <p>Silahkan tinggalkan pesan anda pada kolom yang tersedia.</p>
         <form onSubmit={handleSubmit}>
           <div>
             <label htmlFor="nama">Nama:</label>
