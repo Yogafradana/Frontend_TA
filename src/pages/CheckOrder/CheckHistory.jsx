@@ -59,8 +59,6 @@ const CheckHistory = () => {
                                     <button className="back-button" onClick={() => navigate('/reviewform')}>Ulasan</button>
 
                                     
-
-                                    
                                 </div>
                             </div>
 
