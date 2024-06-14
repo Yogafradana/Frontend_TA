@@ -24,6 +24,17 @@
   flex: 1;
 }
 
+.contact-us .thank-you{
+  background: #f9f9f9;
+  margin: 20px auto;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(96, 56, 9, 1);
+  width: 60%;
+
+  
+}
+
 .contact-us h1 {
   color: #333;
   margin-bottom: 10px;

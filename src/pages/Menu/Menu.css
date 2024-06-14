@@ -135,3 +135,17 @@
   border: 1px solid #a06d4b;
   outline: #a06d4b;
 }
+.menu-cart-frame {
+  max-height: 300px; /* Adjust the height as needed */
+  overflow-y: auto; /* Enable vertical scrolling */
+  border: 1px solid #ccc; /* Optional: Add a border for visual clarity */
+  padding: 10px; /* Optional: Add padding */
+  background-color: transparent; /* Make the background transparent */
+}
+
+.menu-card-order-box-item {
+  margin-bottom: 10px; /* Space between items */
+  padding: 10px;
+  border: 1px solid #ddd; /* Optional: Add a border for each item */
+  border-radius: 5px; /* Optional: Add rounded corners */
+}

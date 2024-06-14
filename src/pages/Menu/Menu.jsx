@@ -205,8 +205,8 @@ const Menu = () => {
                 //   console.log("item", item);
                   return (
                     <div className="menu-card-order-box-item" key={index}>
-                      {item.nama_menu}
-                      <NominalFormat className={""} value={item.harga} />
+                      {item.nama_menu} (x{item.quantity})
+                      <NominalFormat className={""} value={item.harga * item.quantity} />
                       <p>
                         <strong>Keterangan:</strong>
                         <textarea
