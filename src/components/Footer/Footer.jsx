@@ -53,9 +53,11 @@ const Footer = () => {
             <li>
               <FontAwesomeIcon icon={faPhone} /> 0877-6689-0990
             </li>
+
             <li>
               <FontAwesomeIcon icon={faEnvelope} /> cafemicrodata@gmail.com
             </li>
+            
           </ul>
         </div>
 
